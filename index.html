@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>获取手机通讯录</title>
+</head>
+<body>
+  <button id="huo">点击获取通讯录</button>
+  <script>
+    var clickButton = document.getElementById('huo');
+    clickButton.addEventListener('click',function(){
+       plus.contacts.getAddressBook(plus.contacts.ADDRESSBOOK_PHONE,function(addressbook) {//获取通讯录信息
+                // 可通过addressbook进行通讯录操作
+                addressbook.find(null,function(contacts) {
+                    varusername =newArray();
+                    varLinkList =newLinkedList();
+                    if(contacts.length > 0) {//获取当前通讯录里面所有人
+                        for(vari = 0; i < contacts.length; i  ) {
+                            username[i] = contacts[i].displayName + "-" +  contacts[i].id;//连接id和username，为后面筛选最准备
+                        }
+                        //这下面的代码是把所有联系人的信息分类，这就涉及到了自己写的JS页面代码
+                        LinkList = sortPY(username);//把联系人数组分类
+                        //LinkList.show();
+                        createLiCheckBox(LinkList);//分类信息显示至页面，我使用checkBox进行多个联系人选择
+                    }
+ 
+                },function(e) {
+                    alert("Find contact error: " , e.message);
+                });
+ 
+            },function(e) {
+ 
+    });
+
+    })
+    
+  </script>
+</body>
+</html>
